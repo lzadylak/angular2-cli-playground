@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { RouterModule, Routes } from '@angular/router';
 
+import { ROUTES } from './app.routes'
 import { SharedModule } from './shared/shared.module';
+import { ProductsModule } from './products/products.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 
 export const myFirebaseConfig = {
   apiKey: "AIzaSyBKP4cOP508h0JLKmjFvzJooO0MqV8l4fU",
@@ -25,13 +29,16 @@ const myFirebaseAuthConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NoPageFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     SharedModule,
+    ProductsModule,
+    RouterModule.forRoot(ROUTES),
     AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [],
